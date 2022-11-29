@@ -6,6 +6,7 @@ const list = async (req, res) => {
     const {lang, region} = req.query
 
     const data = await eventList(lang, region)
+    if(data === false) return res.json({result: false, error: 'FortniteAPI is not responding'})
 
     if(req.query.upcomingEvents == 'true') {
         data.events = data.events.filter(item => new Date(item.endTime) > new Date())

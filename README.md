@@ -1,6 +1,12 @@
 # api.7fps.com
 [Backend] Useful tools for fortnite competitive players
+```sh
+npm install
+```
 
+```sh
+npm run start
+```
 Create `.env` file in the root directory and add these rows
 ```sh
 # ------------- fortnite-api-server -------------
@@ -21,7 +27,7 @@ DB_USERS_NAME="users"
 DB_USERS_USER="postgres"
 DB_USERS_PASSWORD="admin1"
 
-CLIENT_DOMAIN_NAME="http://localhost:3000" # is using for redirects
+CLIENT_DOMAIN_NAME="http://localhost:3000" # is using for redirects + cors settings
 
 
 DISCORD_CLIENT_ID="000000000000000000"                     # https://discord.com/developers/applications/

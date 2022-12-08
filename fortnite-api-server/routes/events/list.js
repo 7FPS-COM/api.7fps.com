@@ -9,11 +9,9 @@ const list = async (req, res) => {
     if(data === false) return res.json({result: false, error: 'FortniteAPI is not responding'})
 
     if(req.query.last !== undefined) {
-        let last = 20
+        let last = 21
 
-        if(!isNaN(req.query.last)) {
-            last = req.query.last < 100 ? req.query.last : last
-        }
+        last = isNaN(req.query.last) ? last : req.query.last
 
         data.events = data.events.sort(function(a,b){
             // Turn your strings into dates, and then subtract them

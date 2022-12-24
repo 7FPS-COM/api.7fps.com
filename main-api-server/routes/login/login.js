@@ -22,7 +22,6 @@ router.get('/', async (req, res) => {
     if(req.query.code) {
         try {
             const token_data = await getTokenResponseData(req.query.code)
-            console.log({token_data})
             if(!token_data.access_token) {
                 console.log("####################################")
                 console.log({access_token: token_data.access_token})
@@ -67,6 +66,9 @@ router.get('/', async (req, res) => {
 
             
         } catch (error) {
+            console.log("####################################")
+            console.log({error})
+            console.log("####################################")
             return res.redirect(DISCORD_GENERATED_URL)
         }
     }

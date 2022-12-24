@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     if(req.query.code) {
         try {
             const token_data = await getTokenResponseData(req.query.code)
-            console.log(token_data)
+            console.log({token_data})
             if(!token_data.access_token) {
                 throw 'no access token'
             }

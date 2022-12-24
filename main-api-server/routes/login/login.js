@@ -64,8 +64,6 @@ router.get('/', async (req, res) => {
 
             
         } catch (error) {
-            console.log(error)
-            console.log(error.message)
             return res.redirect(DISCORD_GENERATED_URL)
         }
     }

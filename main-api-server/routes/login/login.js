@@ -24,6 +24,7 @@ router.get('/', async (req, res) => {
             const token_data = await getTokenResponseData(req.query.code)
             console.log({token_data})
             if(!token_data.access_token) {
+                console.log({access_token: token_data.access_token})
                 throw 'no access token'
             }
             const access_token = token_data.access_token

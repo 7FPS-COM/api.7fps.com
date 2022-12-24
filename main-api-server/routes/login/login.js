@@ -1,5 +1,5 @@
 const Router = require('express')
-const getTokenResponseData = require('../../main/auth/gettokenResponseData')
+const getTokenResponseData = require('../../main/auth/getTokenResponseData')
 const getUserConnections = require('../../main/auth/getUserConnections')
 const getUserData = require('../../main/auth/getUserData')
 const getUserGuilds = require('../../main/auth/getUserGuilds')

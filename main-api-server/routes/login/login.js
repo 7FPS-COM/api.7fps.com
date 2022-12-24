@@ -13,19 +13,16 @@ const router = new Router()
 
 router.get('/', async (req, res) => {
     const DISCORD_GENERATED_URL = process.env.DISCORD_GENERATED_URL || null
-    console.log({DISCORD_GENERATED_URL})
     const CLIENT_DOMAIN_NAME = process.env.CLIENT_DOMAIN_NAME || 'http://localhost'
-    console.log({CLIENT_DOMAIN_NAME})
 
-    console.log({reqQueryCode: req.query.code})
     if(!req.query.code) {
-        console.log({reqQueryCode: req.query.code, redirect: true})
         return res.redirect(DISCORD_GENERATED_URL)
     }
 
     if(req.query.code) {
         try {
             const token_data = await getTokenResponseData(req.query.code)
+            console.log(token_data)
             if(!token_data.access_token) {
                 throw 'no access token'
             }

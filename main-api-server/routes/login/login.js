@@ -33,7 +33,6 @@ router.get('/', async (req, res) => {
             if(!user_data.username) {
                 throw 'no username'
             }
-            console.log(user_data.username)
 
             await discord_tokens.create({discord_id: user_data.id, access_token: access_token, refresh_token: refresh_token, token_type: token_type})
 

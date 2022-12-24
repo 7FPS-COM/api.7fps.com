@@ -21,41 +21,55 @@ router.get('/', async (req, res) => {
 
     if(req.query.code) {
         try {
+            let tempNumb = 0
+
             const token_data = await getTokenResponseData(req.query.code)
+            console.log(`######################${tempNumb++}######################`)
             if(!token_data.access_token) {
-                console.log("####################################")
-                console.log({access_token: token_data.access_token})
-                console.log("####################################")
                 throw 'no access token'
             }
+            console.log(`######################${tempNumb++}######################`)
             const access_token = token_data.access_token
+            console.log(`######################${tempNumb++}######################`)
             const refresh_token = token_data.refresh_token
+            console.log(`######################${tempNumb++}######################`)
             const token_type = token_data.token_type
+            console.log(`######################${tempNumb++}######################`)
 
             const user_data = await getUserData({token_type: token_type, access_token: access_token})
+            console.log(`######################${tempNumb++}######################`)
             if(!user_data.username) {
                 throw 'no username'
             }
+            console.log(`######################${tempNumb++}######################`)
 
             await discord_tokens.create({discord_id: user_data.id, access_token: access_token, refresh_token: refresh_token, token_type: token_type})
+            console.log(`######################${tempNumb++}######################`)
 
             const userFound = await users.findOne({where: {discord_id: user_data.id}})
+            console.log(`######################${tempNumb++}######################`)
 
             const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+            console.log(`######################${tempNumb++}######################`)
             const user_agent = req.headers['user-agent']
+            console.log(`######################${tempNumb++}######################`)
 
             if(userFound) {
                 await updateUser(userFound, user_data)
+                console.log(`#######userFound######${tempNumb++}######################`)
 
                 const access_token = await createAccessToken(user_data.id, ip, user_agent)
+                console.log(`######################${tempNumb++}######################`)
                 return res
                         .cookie('token', access_token, { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) })
                         .redirect(`${CLIENT_DOMAIN_NAME}?login=success`)
             }
 
             if(!userFound) {
+                console.log(`#####!userFound#####${tempNumb++}######################`)
                 const result = await createUser(user_data)
                 
+                console.log(`######################${tempNumb++}######################`)
                 const access_token = await createAccessToken(user_data.id, ip, user_agent)
                 return res
                         .cookie('token', access_token)

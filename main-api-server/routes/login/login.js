@@ -12,10 +12,10 @@ const router = new Router()
 
 
 router.get('/', async (req, res) => {
-    console.log({DISCORD_GENERATED_URL})
     const DISCORD_GENERATED_URL = process.env.DISCORD_GENERATED_URL || null
-    console.log({CLIENT_DOMAIN_NAME})
+    console.log({DISCORD_GENERATED_URL})
     const CLIENT_DOMAIN_NAME = process.env.CLIENT_DOMAIN_NAME || 'http://localhost'
+    console.log({CLIENT_DOMAIN_NAME})
 
     console.log({reqQueryCode: req.query.code})
     if(!req.query.code) {

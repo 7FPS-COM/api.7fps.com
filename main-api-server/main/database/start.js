@@ -1,4 +1,4 @@
-const sequelize = require('./db')
+const sequelize = require('./db.js')
 require('./models/models')
 
 const start = async () => {

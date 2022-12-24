@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express');
 
 const app = express();
-const path = require("path");
 
 var superNumber = 1
 app.use((req, res, next) => {

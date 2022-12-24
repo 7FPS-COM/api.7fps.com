@@ -1,5 +1,5 @@
-const sequelize = require('./database/db')
-require('./database/models/models')
+const sequelize = require('./database/db.js')
+require('./database/models/models.js')
 
 const start = async () => {
     try {

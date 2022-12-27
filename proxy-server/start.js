@@ -1,15 +1,15 @@
 const httpProxy = require('http-proxy');
 const http = require('http');
-require('dotenv').config()
+
 
 const proxy = httpProxy.createServer();
 
-const guiUrl = `http://5.187.0.204:3000`;
+const guiUrl = 'http://localhost:3000';
 
-const apiUrl = `${process.env.CLIENT_DOMAIN_NAME}:4000`;
+const apiUrl = 'http://localhost:4000';
 const apiPrefix = '/api';
 
-const fnApiUrl = 'http://5.187.0.204:1000';
+const fnApiUrl = 'http://localhost:1000';
 const fnApiPrefix = '/fnapi';
 
 const port = 80;

@@ -24,5 +24,5 @@ http.createServer((req, res) => {
     req.url = req.url.replace(fnApiPrefix, '/');
     target = fnApiUrl;
   }
-  proxy.web(req, res, { target })
+    proxy.web(req, res, { target })
 }).listen(port);

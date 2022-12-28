@@ -15,5 +15,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(process.env.FORTNITE_API_SERVER_PORT, () =>
-  console.log(`Fortnite API server is listening on port ${process.env.FORTNITE_API_SERVER_PORT}!`),
+  console.log(`Fortnite API server is listening on port ${process.env.FORTNITE_API_SERVER_PORT}`),
 );

@@ -1,5 +1,6 @@
 const httpProxy = require('http-proxy');
 const http = require('http');
+const { maintenanceHtml } = require('./maintenanceHtml');
 
 
 const proxy = httpProxy.createServer();
@@ -25,4 +26,11 @@ http.createServer((req, res) => {
     target = fnApiUrl;
   }
     proxy.web(req, res, { target })
-}).listen(port);
+
+    proxy.on('error', (error) => {
+      console.log(error.message)
+      res.end(maintenanceHtml);
+    })
+}).listen(port, () => {
+  console.log(`Proxy server has started on port 80`)
+});

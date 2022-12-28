@@ -28,17 +28,16 @@ const cors = {
           `https://${process.env.CLIENT_DOMAIN_NAME}`,
           `http://www.${process.env.CLIENT_DOMAIN_NAME}`,
           `https://www.${process.env.CLIENT_DOMAIN_NAME}`
-        ],
-  default: process.env.CLIENT_DOMAIN_NAME
+        ]
 }
 
 app.all('*', function(req, res, next) {
-  const origin = cors.origin.includes(req.get('host').toLowerCase()) ? req.headers.origin : cors.default;
+  const origin = cors.origin.includes(req.get('host').toLowerCase()) ? "*" : "null";
   console.log(cors)
   console.log(req.get('host'))
   res.header("Access-Control-Allow-Origin", origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
 

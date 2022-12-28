@@ -3,6 +3,7 @@ const express = require('express');
 require('./main/database/start.js')
 
 const app = express();
+app.enable('trust proxy');
 
 var superNumber = 1
 app.use((req, res, next) => {
@@ -35,7 +36,7 @@ app.all('*', function(req, res, next) {
   const origin = cors.origin.includes(req.get('host').toLowerCase()) ? "*" : "null";
   console.log(cors)
   console.log(req.get('host'))
-  console.log(req.secure)
+  console.log({secure: req.secure})
   res.header("Access-Control-Allow-Origin", "fortnite-tools.com");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Credentials", "true");

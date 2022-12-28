@@ -27,7 +27,7 @@ DB_USERS_NAME="users"
 DB_USERS_USER="postgres"
 DB_USERS_PASSWORD="admin1"
 
-CLIENT_DOMAIN_NAME="http://localhost:3000" # is using for redirects + cors settings
+CLIENT_DOMAIN_NAME="localhost" # is using for redirects + cors settings
 
 
 DISCORD_CLIENT_ID="000000000000000000"                     # https://discord.com/developers/applications/

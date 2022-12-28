@@ -4,7 +4,7 @@ require('./main/database/start.js')
 
 const app = express();
 app.enable('trust proxy');
-app.set('subdomain offset', 1);
+app.set('subdomain offset', 0);
 
 var superNumber = 1
 app.use((req, res, next) => {

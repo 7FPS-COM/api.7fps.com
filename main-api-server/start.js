@@ -25,7 +25,10 @@ app.use(cookieParser());
 const cors = {
   origin: [process.env.CLIENT_DOMAIN_NAME,
           `http://${process.env.CLIENT_DOMAIN_NAME}`,
-          `https://${process.env.CLIENT_DOMAIN_NAME}`],
+          `https://${process.env.CLIENT_DOMAIN_NAME}`,
+          `http://www.${process.env.CLIENT_DOMAIN_NAME}`,
+          `https://www.${process.env.CLIENT_DOMAIN_NAME}`
+        ],
   default: process.env.CLIENT_DOMAIN_NAME
 }
 

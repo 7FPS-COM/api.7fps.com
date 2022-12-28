@@ -11,6 +11,7 @@ var whitelist = [`http://${process.env.CLIENT_DOMAIN_NAME}`, `https://${process.
 var corsOptions = {
   credentials: true,
   origin: function (origin, callback) {
+    console.log({origin, whitelist})
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {

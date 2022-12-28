@@ -34,7 +34,7 @@ const cors = {
 }
 
 app.all('*', function(req, res, next) {
-  const origin = cors.origin.includes(req.get('host').toLowerCase()) ? "*" : "null";
+  const origin = cors.origin.includes(req.get('host').toLowerCase()) ? req.get('host').toLowerCase() : "null";
   console.log({cors})
   console.log(req.protocol + '://' + req.get('host'))
   console.log({secure: req.secure})

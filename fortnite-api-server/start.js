@@ -5,18 +5,6 @@ const router = require('./routes/fortniteRouter');
 
 const app = express();
 
-const cors = {
-  origin: [`http://${process.env.CLIENT_DOMAIN_NAME}`, `https://${process.env.CLIENT_DOMAIN_NAME}`],
-  default: `https://${process.env.CLIENT_DOMAIN_NAME}`
-}
-
-app.all('*', function(req, res, next) {
-  const origin = cors.origin.includes(req.header('origin').toLowerCase()) ? req.headers.origin : cors.default;
-  res.header("Access-Control-Allow-Origin", origin);
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 

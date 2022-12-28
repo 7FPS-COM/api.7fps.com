@@ -5,21 +5,17 @@ const router = require('./routes/fortniteRouter');
 
 const app = express();
 
-var cors = require('cors');
-
-var whitelist = [`http://${process.env.CLIENT_DOMAIN_NAME}`, `https://${process.env.CLIENT_DOMAIN_NAME}`]
-var corsOptions = {
-  credentials: true,
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      console.log({origin, whitelist})
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
+const cors = {
+  origin: [`http://${process.env.CLIENT_DOMAIN_NAME}`, `https://${process.env.CLIENT_DOMAIN_NAME}`],
+  default: `https://${process.env.CLIENT_DOMAIN_NAME}`
 }
-app.use(cors(corsOptions));
+
+app.all('*', function(req, res, next) {
+  const origin = cors.origin.includes(req.header('origin').toLowerCase()) ? req.headers.origin : cors.default;
+  res.header("Access-Control-Allow-Origin", origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());

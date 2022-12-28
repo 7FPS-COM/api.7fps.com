@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
                 const access_token = await createAccessToken(user_data.id, ip, user_agent)
                 return res
                         .cookie('token', access_token, { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) })
-                        .redirect(`${CLIENT_DOMAIN_NAME}?login=success`)
+                        .redirect(`http://${CLIENT_DOMAIN_NAME}?login=success`)
             }
 
             if(!userFound) {
@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
                 const access_token = await createAccessToken(user_data.id, ip, user_agent)
                 return res
                         .cookie('token', access_token)
-                        .redirect(`${CLIENT_DOMAIN_NAME}?login=success`)
+                        .redirect(`http://${CLIENT_DOMAIN_NAME}?login=success`)
             }
 
 

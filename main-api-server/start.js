@@ -36,9 +36,7 @@ const cors = {
 app.all('*', function(req, res, next) {
   const origin = cors.origin.includes(req.get('host').toLowerCase()) ? "*" : "null";
   console.log({cors})
-  console.log({subdomains: req.subdomains,
-  path: req.path})
-  console.log(req.get('host'))
+  console.log(req.protocol + '://' + req.get('host') + req.originalUrl)
   console.log({secure: req.secure})
   res.header("Access-Control-Allow-Origin", "fortnite-tools.com");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

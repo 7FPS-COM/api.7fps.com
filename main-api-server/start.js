@@ -38,7 +38,7 @@ app.all('*', function(req, res, next) {
   console.log(req.get('host'))
   res.header("Access-Control-Allow-Origin", origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Credentials: true");
+  res.header("Access-Control-Allow-Credentials", true);
   next();
 });
 

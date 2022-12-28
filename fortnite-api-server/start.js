@@ -4,6 +4,7 @@ const express = require('express');
 const router = require('./routes/fortniteRouter');
 
 const app = express();
+app.enable('trust proxy');
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());

@@ -34,6 +34,8 @@ const cors = {
 
 app.all('*', function(req, res, next) {
   const origin = cors.origin.includes(req.get('host').toLowerCase()) ? req.headers.origin : cors.default;
+  console.log(cors)
+  console.log(req.get('host'))
   res.header("Access-Control-Allow-Origin", origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Credentials: true");

@@ -14,6 +14,7 @@ const router = new Router()
 router.get('/', async (req, res) => {
     const DISCORD_GENERATED_URL = process.env.DISCORD_GENERATED_URL || null
     const CLIENT_DOMAIN_NAME = process.env.CLIENT_DOMAIN_NAME || 'http://localhost'
+    const PROTOCOL = process.env.PROTOCOL || 'http'
 
     if(!req.query.code) {
         return res.redirect(DISCORD_GENERATED_URL)
@@ -47,7 +48,7 @@ router.get('/', async (req, res) => {
                 const access_token = await createAccessToken(user_data.id, ip, user_agent)
                 return res
                         .cookie('token', access_token, { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) })
-                        .redirect(`https://${CLIENT_DOMAIN_NAME}?login=success`)
+                        .redirect(`${PROTOCOL}://${CLIENT_DOMAIN_NAME}?login=success`)
             }
 
             if(!userFound) {
@@ -56,7 +57,7 @@ router.get('/', async (req, res) => {
                 const access_token = await createAccessToken(user_data.id, ip, user_agent)
                 return res
                         .cookie('token', access_token)
-                        .redirect(`https://${CLIENT_DOMAIN_NAME}?login=success`)
+                        .redirect(`${PROTOCOL}://${CLIENT_DOMAIN_NAME}?login=success`)
             }
 
 

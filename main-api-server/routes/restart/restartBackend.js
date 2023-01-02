@@ -10,7 +10,8 @@ router.get('/', async (req, res) => {
 
     const user = await getUserByRequest(req)
     if(me(user).discord_id === process.env.ADMIN_DISCORD_ID) {
-        
+        return res.json({restart: true})
+
         exec(`sudo systemctl restart ${process.env.BACKEND_SERVICE_NAME}`, (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
@@ -22,7 +23,6 @@ router.get('/', async (req, res) => {
             }
             console.log(`stdout: ${stdout}`);
         });
-        return res.json({restart: true})
     }
     return res.json({restart: false})
 })

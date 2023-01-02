@@ -22,8 +22,9 @@ router.get('/', async (req, res) => {
             }
             console.log(`stdout: ${stdout}`);
         });
+        return res.json({restart: true})
     }
-    return res.json({restart: true})
+    return res.json({restart: false})
 })
 
 module.exports = router;

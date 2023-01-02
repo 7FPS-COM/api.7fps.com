@@ -9,8 +9,8 @@ router.get('/', async (req, res) => {
     if(process.env.BACKEND_SERVICE_NAME === undefined) return
 
     const user = await getUserByRequest(req)
+    console.log(me(user).discord_id, process.env.ADMIN_DISCORD_ID)
     if(me(user).discord_id === process.env.ADMIN_DISCORD_ID) {
-
         exec(`sudo systemctl restart ${process.env.BACKEND_SERVICE_NAME}`, (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);

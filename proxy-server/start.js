@@ -5,12 +5,12 @@ const { maintenanceHtml } = require('./maintenanceHtml');
 
 const proxy = httpProxy.createServer();
 
-const guiUrl = 'http://localhost:3000';
+const guiUrl = 'http://localhost:3000'; // react frontend app
 
-const apiUrl = 'http://localhost:4000';
+const apiUrl = 'http://localhost:4000'; // 1st api server
 const apiPrefix = '/api';
 
-const fnApiUrl = 'http://localhost:1000';
+const fnApiUrl = 'http://localhost:1000'; // 2nd api server
 const fnApiPrefix = '/fnapi';
 
 const port = 80;

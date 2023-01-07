@@ -7,5 +7,6 @@ router.use('/notes', require('./notes/notesRouter'));
 router.use('/user', require('./user/userRouter'))
 router.use('/restart/backend', require('./restart/restartBackend'))
 router.use('/restart/frontend', require('./restart/restartFrontend'))
+router.use('/stats', require('./stats/stats'))
 
 module.exports = router;
